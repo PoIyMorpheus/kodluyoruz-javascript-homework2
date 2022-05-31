@@ -15,18 +15,26 @@ function newElement(){
 
 function addNewElement(element){
     let liDOM = document.createElement("li")
-    liDOM.innerHTML = `${element} <span onclick="removeElement()" class="close">&times;</span>`
+    liDOM.innerHTML = `${element} <span class="close">&times;</span>`
     ulDOM.append(liDOM)
 }
 
-const removeElement = () => {
-    let itemDOM = document.querySelector('#list .close')
+const removeElement = (event) => {
+    let itemDOM = event.target
     itemDOM.parentNode.remove()
 }
 
 const checkedElement = (event) => {
-    if(event.target.tagName === 'LI') {
-        event.target.classList.toggle("checked")
-    }
+    event.target.classList.toggle("checked")
 }
-ulDOM.addEventListener('click', checkedElement)
+
+const ulClickEvents = (event) => {
+    if(event.target.tagName ==='SPAN'){
+        removeElement(event)
+    }
+    else if(event.target.tagName === 'LI') {
+        checkedElement(event)
+    }
+
+}
+ulDOM.addEventListener('click', ulClickEvents)
