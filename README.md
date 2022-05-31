@@ -1,1 +1,2 @@
-# kodluyoruz-javascript-homework2
+# Kodluyoruz Javascript Homework 2
+Kodluyoruz | Patika.dev JavaScript Projesi
